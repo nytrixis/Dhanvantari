@@ -7,7 +7,7 @@ const SOSRequestList = () => {
     useEffect(() => {
         const fetchSOSRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:5173/sos');
+                const response = await axios.get('http://localhost:55555/sos');
                 setSOSRequests(response.data);
             } catch (error) {
                 console.error('Error fetching SOS requests:', error);
@@ -19,7 +19,7 @@ const SOSRequestList = () => {
     const handleAction = async (id, action) => {
         console.log(`Updating SOS request ${id} with action ${action}`);
         try {
-            const updatedRequest = await axios.put(`http://localhost:5173/sos/${id}`, { status: action });
+            const updatedRequest = await axios.put(`http://localhost:55555/sos/${id}`, { status: action });
             console.log('Updated SOS request:', updatedRequest.data);
             setSOSRequests(prevRequests =>
                 prevRequests.map(request =>
@@ -34,7 +34,7 @@ const SOSRequestList = () => {
     const handleDelete = async (id) => {
         console.log(`Deleting SOS request ${id}`);
         try {
-            await axios.delete(`http://localhost:5173/sos/${id}`);
+            await axios.delete(`http://localhost:55555/sos/${id}`);
             setSOSRequests(prevRequests =>
                 prevRequests.filter(request => request._id !== id)
             );
