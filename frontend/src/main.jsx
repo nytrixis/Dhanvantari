@@ -24,6 +24,7 @@ import SOSRequest from "./components/SOSRequest";
 import SOSRequestList from "./components/SOSRequestList";
 import MicListener from "./components/MicListener";
 import AuthPage from './components/AuthPage';
+import About from './components/About';
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -50,6 +51,8 @@ const router = createBrowserRouter(
       <Route path="/sosreqlist" element={<SOSRequestList/>} />
       <Route path="/miclistener" element={<MicListener/>} />
       <Route path='/auth' element={<AuthPage/>}/>
+      <Route path="/about" element={<About />} />
+      
     </Route>
   )
 )
