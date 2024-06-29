@@ -62,7 +62,6 @@ const SOSRequestList = () => {
                             <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Contact Number</th>
                             <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Reason</th>
                             <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Health Problem</th>
-                            <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Estimated Time</th>
                             <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Location</th>
                             <th className="px-6 py-3 text-red-500 text-lg font-bold uppercase border-b border-gray-700">Ambulance</th>
                             <th className="px-6 py-3 text-lg font-bold uppercase border-b border-gray-700">Actions</th>
@@ -75,7 +74,6 @@ const SOSRequestList = () => {
                                 <td className="px-6 py-4">{request.contactNumber}</td>
                                 <td className="px-6 py-4">{request.reason}</td>
                                 <td className="px-6 py-4">{request.healthProblem}</td>
-                                <td className="px-6 py-4">{request.estimatedTime}</td>
                                 <td className="px-6 py-4 cursor-pointer"
                                     onClick={() => openGoogleMaps(request.location.coordinates[1], request.location.coordinates[0])}
                                 >

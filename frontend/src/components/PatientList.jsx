@@ -12,7 +12,7 @@ const PatientList = () => {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const response = await axios.get('http://localhost:5183/patients');
+                const response = await axios.get('http://localhost:55555/patients');
                 setPatients(response.data);
             } catch (error) {
                 console.error('Error fetching patients:', error);
@@ -22,7 +22,7 @@ const PatientList = () => {
     }, []);
 
     const generateQRCodeData = (patient) => {
-        return `http://localhost:5173/patient/${patient._id}`;
+        return `http://localhost:55555/patient/${patient._id}`;
     };
 
     const downloadQRCode = async (id) => {
@@ -33,7 +33,7 @@ const PatientList = () => {
 
     const deletePatient = async (id) => {
         try {
-            await axios.delete(`http://localhost:5173/patients/${id}`);
+            await axios.delete(`http://localhost:55555/patients/${id}`);
             setPatients(patients.filter(patient => patient._id !== id));
         } catch (error) {
             console.error('Error deleting patient:', error);

@@ -24,7 +24,7 @@ const PatientRecord = () => {
         diagnosis,
         treatment,
       };
-      const response = await axios.post('http://localhost:5173/patient', newPatient, {
+      const response = await axios.post('http://localhost:55555/patient', newPatient, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -41,7 +41,7 @@ const PatientDashboard = ({ setTotalPatients, setTotalAppointments }) => {
     useEffect(() => {
         const fetchPatientData = async () => {
             try {
-                const response = await axios.get('http://localhost:5173/patientsdashboard');
+                const response = await axios.get('http://localhost:55555/patientsdashboard');
                 setPatientData(response.data);
                 const totalPatients = response.data.femalePatients + response.data.malePatients + response.data.otherPatients + response.data.nonPatients;
                 setTotalPatients(totalPatients);

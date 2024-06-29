@@ -47,12 +47,11 @@ const AuthPage = () => {
       // Login logic
       const { email, password } = formData;
       if (
-        (email === 'ajayapandey2404@gmail.com' && password === '1234') ||
-        (email === 'qwerty12@gmail.com' && password === 'abcd')
+        (email === 'ajayapandey2404@gmail.com' && password === '1234') || (email === 'qwerty12@gmail.com' && password === 'abcd')
       ) {
         setSuccessMessage('Successful login!');
         setErrorMessage('');
-        navigate('/');
+        navigate('/patient');
       } else {
         setSuccessMessage('');
         setErrorMessage('Incorrect credentials');
