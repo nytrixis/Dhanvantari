@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from '../axios';
+import { useNavigate } from 'react-router-dom';
 import Section from './Section';
 import { BottomLine } from './design/Hero';
 
@@ -14,31 +14,52 @@ const AuthPage = () => {
     bloodGroup: '',
     allergies: '',
     contact: '',
+    email: '',
     password: '',
   });
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const toggleAuthMode = () => {
     setIsSignUp(!isSignUp);
+    setSuccessMessage('');
+    setErrorMessage('');
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
-    try {
-      const url = isSignUp ? '/signup' : '/login';
-      const response = await axios.post(url, formData);
-      console.log(response.data);
-      // Handle successful response
-    } catch (error) {
-      console.error(error);
-      // Handle error
+
+    if (isSignUp) {
+      // Registration logic
+      // const { name, username, age, gender, role, bloodGroup, allergies, contact, email, password } = formData;
+      // if (!name || !username || !age || !gender || !role || !bloodGroup || !allergies || !contact || !email || !password) {
+      //   setErrorMessage('Please fill out all fields.');
+      //   return;
+      // }
+      setSuccessMessage('Successful registration!');
+      setErrorMessage('');
+    } else {
+      // Login logic
+      const { email, password } = formData;
+      if (
+        (email === 'ajayapandey2404@gmail.com' && password === '1234') ||
+        (email === 'qwerty12@gmail.com' && password === 'abcd')
+      ) {
+        setSuccessMessage('Successful login!');
+        setErrorMessage('');
+        navigate('/');
+      } else {
+        setSuccessMessage('');
+        setErrorMessage('Incorrect credentials');
+      }
     }
   };
-  
+
   return (
     <Section
       className="pt-[12rem] -mt-[5.25rem]"
@@ -59,9 +80,13 @@ const AuthPage = () => {
 
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl">
           <div className="relative z-1 bg-n-8 rounded-[1rem] p-8">
+            {successMessage && <p className="text-green-500 mb-4">{successMessage}</p>}
+            {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
             <form onSubmit={handleSubmit}>
+              {/* Render registration fields if isSignUp is true */}
               {isSignUp && (
                 <>
+                  {/* Registration fields */}
                   <div className="mb-4">
                     <label htmlFor="name" className="block text-n-1 font-medium mb-2">
                       Name
@@ -74,21 +99,6 @@ const AuthPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-2 rounded-md bg-n-7 text-n-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="username" className="block text-n-1 font-medium mb-2">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      id="username"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-md bg-n-7 text-n-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="Enter your username"
                       required
                     />
                   </div>
@@ -223,6 +233,8 @@ const AuthPage = () => {
                 {isSignUp ? 'Sign Up' : 'Login'}
               </button>
             </form>
+
+            {/* Toggle between Sign Up and Login */}
             <div className="mt-4 text-center">
               <span className="text-n-2">
                 {isSignUp ? 'Already have an account?' : 'Don\'t have an account?'}
@@ -245,3 +257,6 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+
+
+
