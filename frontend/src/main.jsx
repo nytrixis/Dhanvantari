@@ -26,6 +26,8 @@ import MicListener from "./components/MicListener";
 import AuthPage from './components/AuthPage';
 import About from './components/About';
 import Contact from './components/Contact';
+import Patient from './components/patient';
+import Doctor from './components/Doctor';
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -54,7 +56,8 @@ const router = createBrowserRouter(
       <Route path='/auth' element={<AuthPage/>}/>
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      
+      <Route path="/patient" element={<Patient/>} />
+      <Route path="/doctor" element={<Doctor/>} />
     </Route>
   )
 )

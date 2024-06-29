@@ -36,7 +36,7 @@ import {
   yourlogo,
 } from "../assets";
 
-export const navigation = [
+export const navigationpatient = [
 
   {
     id: "1",
@@ -59,11 +59,83 @@ export const navigation = [
     title: "Consultation",
     url: "/record",
   },
+  // {
+  //   id: "6",
+  //   title: "Analytics insights",
+  //   url: "/maindash",
+  // },
+  {
+    id: "5",
+    title: "Sign in",
+    url: "",
+    onlyMobile: true,
+  },
+];
+
+export const navigationdoctor = [
+
+  {
+    id: "1",
+    title: "Document Transfer",
+    url: "/shareService",
+  },
+  {
+    id: "2",
+    title: "Document Sentinel",
+    url: "/digilocker",
+  },
+  {
+    id: "4",
+    title: "Workstation",
+    url: "/meet",
+  },
+
+  // {
+  //   id: "8",
+  //   title: "Consultation",
+  //   url: "/record",
+  // },
   {
     id: "6",
     title: "Analytics insights",
     url: "/maindash",
   },
+  {
+    id: "5",
+    title: "Sign in",
+    url: "",
+    onlyMobile: true,
+  },
+];
+
+export const navigation = [
+
+  {
+    id: "1",
+    title: "Home",
+    url: "/",
+  },
+  {
+    id: "2",
+    title: "About",
+    url: "/about",
+  },
+  {
+    id: "4",
+    title: "Contact",
+    url: "/contact",
+  },
+
+  // {
+  //   id: "8",
+  //   title: "Consultation",
+  //   url: "/record",
+  // },
+  // {
+  //   id: "6",
+  //   title: "Analytics insights",
+  //   url: "/maindash",
+  // },
   {
     id: "5",
     title: "Sign in",
