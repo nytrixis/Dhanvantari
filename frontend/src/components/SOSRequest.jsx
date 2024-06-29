@@ -54,7 +54,7 @@ const SOSRequest = () => {
 
   const handleSubmit = async () => {
     const { contactNumber, reason, healthProblem, estimatedTime, language } = formData;
-    if (!contactNumber || !reason || !healthProblem || !estimatedTime || !language) {
+    if (!contactNumber || !reason || !healthProblem || !language) {
       setErrorMessage('Please fill out all fields.');
       return;
     }

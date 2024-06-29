@@ -4,7 +4,10 @@ import Express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import bodyParser from 'body-parser';
+import SOSRequest from './records/models/sosRequest.js';
 import User from 'file:///C:/Users/ajaya/Downloads/DHANVANTARI/DHANVANTARI/records/models/userModel.js';
+
+
 
 
 //pinata gateway added 
@@ -146,9 +149,30 @@ app.post('/share', async (req, res) => {
     }
 });
 
+app.post('/sosreq', async (req, res) => {
+  try {
+    const { contactNumber, location, reason, healthProblem, estimatedTime } = req.body;
+    const newSOSRequest = new SOSRequest({
+      contactNumber,
+      location,
+      reason,
+      healthProblem,
+      estimatedTime,
+      status: 'pending',
+    });
+    const savedSOSRequest = await newSOSRequest.save();
+    res.status(201).json(savedSOSRequest);
+  } catch (error) {
+    console.error('Error creating SOS request:', error);
+    res.status(400).json({ error: 'Failed to create SOS request.' });
+  }
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
 });
+
 
 
 app.post('/signup', async (req, res) => {
