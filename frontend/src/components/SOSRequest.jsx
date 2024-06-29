@@ -60,8 +60,8 @@ const SOSRequest = () => {
     }
 
     const staticLocation = {
-      latitude: 17.385044,
-      longitude: 78.486671,
+      latitude: 22.975084,
+      longitude: 88.434509,
     };
 
     const data = {

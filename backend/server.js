@@ -4,7 +4,7 @@ import Express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import bodyParser from 'body-parser';
-import SOSRequest from './records/models/sosRequest.js';
+import SOSRequest from 'file:///C:/Users/ajaya/Downloads/DHANVANTARI/DHANVANTARI/records/models/sosRequest.js';
 import User from 'file:///C:/Users/ajaya/Downloads/DHANVANTARI/DHANVANTARI/records/models/userModel.js';
 
 
