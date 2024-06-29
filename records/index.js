@@ -8,16 +8,29 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 55555;
 
 app.use(express.json());
 app.use(cors({
   origin: "http://localhost:5173",
   methods: ['POST', 'GET', 'PUT', 'DELETE']
 }));
-connect();
-console.log("MongoDB connection established successfully.");
+const startServer = async () => {
+  try {
+    await connect();
+    console.log("MongoDB connection established successfully.");
 
+    // Start the server after the database connection is established
+    app.listen(PORT, () => {
+      console.log(`App running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit the process with a non-zero status code
+  }
+};
+
+startServer();
 app.get('/sos/statusCounts', async (req, res) => {
   try {
     const sentCount = await SOSRequest.countDocuments({ status: 'sent' });
@@ -39,13 +52,12 @@ app.get('/sos/statusCounts', async (req, res) => {
 
 app.post('/sos', async (req, res) => {
   try {
-    const { contactNumber, location, reason, healthProblem, estimatedTime } = req.body;
+    const { contactNumber, location, reason, healthProblem } = req.body;
     const newSOSRequest = new SOSRequest({
       contactNumber,
       location,
       reason,
       healthProblem,
-      estimatedTime,
       status: 'pending',
     });
     const savedSOSRequest = await newSOSRequest.save();
@@ -210,8 +222,4 @@ app.get('/patientsdashboard', async (req, res) => {
     console.error('Error fetching patient dashboard data:', error);
     res.status(500).json({ error: 'Failed to fetch patient dashboard data.' });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}`);
 });

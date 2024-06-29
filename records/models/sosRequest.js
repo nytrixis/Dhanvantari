@@ -21,7 +21,7 @@ const SOSRequestSchema = new Schema({
   },
   estimatedTime: {
     type: String,
-    required: true,
+    required: false,
   },
   status: {
     type: String,

@@ -73,7 +73,7 @@ const SOSRequest = () => {
     };
 
     try {
-      await axios.post('http://localhost:5173/sos', data);
+      await axios.post('http://localhost:55555/sos', data);
       setSuccessMessage('We have sent an SOS Request to all nearby Hospitals.');
       setFormData({
         contactNumber: '',
