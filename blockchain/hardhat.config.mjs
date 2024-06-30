@@ -19,25 +19,4 @@ const avalanche = new Avalanche(fujiTestnet.url, {
   hrp: fujiTestnet.hrp,
 });
 
-module.exports = {
-  avalanche,
-  networks: {
-    fuji: fujiTestnet,
-    mainnet,
-  },
-  paths: {
-    artifacts: './artifacts',
-    cache: './cache',
-    sources: './contracts',
-    tests: './test',
-  },
-  solidity: {
-    version: '0.8.17',
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
-      },
-    },
-  },
-};
+export default avalanche;

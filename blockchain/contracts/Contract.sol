@@ -37,13 +37,16 @@ contract VoteMain {
         return dataHolder[_sender];
     }
 
-    function handle(uint32 _origin, bytes32 _sender, bytes memory _body) external onlyMailbox {
-        (uint256 callType, bytes memory _data) = abi.decode(_body, (uint256, bytes));
-        if (callType == 1) {
-            (address _senderid, address _receiver, string memory _cid) = abi.decode(_data, (address, address, string));
-            addFileToIPFS(_senderid, _receiver, _cid);
-        }
-    }
+    function handle(bytes calldata _data) external onlyMailbox {
+    (uint256 callType, bytes memory data) = abi.decode(_data, (uint256, bytes));
 
+    if (callType == 1) {
+        (address _senderid, address _receiver, string memory _cid) = abi.decode(data, (address, address, string));
+        addFileToIPFS(_senderid, _receiver, _cid);
+    }
+}
     receive() external payable {}
 }
+
+// SPDX-License-Identifier: MIT
+

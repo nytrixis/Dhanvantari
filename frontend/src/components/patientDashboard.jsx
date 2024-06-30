@@ -106,7 +106,7 @@ const PatientDashboard = ({ setTotalPatients, setTotalAppointments }) => {
             pieChartAge = new Chart(pieChartAgeCtx, {
                 type: 'pie',
                 data: {
-                    labels: ['Above 18', '18 to 40', 'Above 40'],
+                    labels: ['Below 18', '18 to 40', 'Above 40'],
                     datasets: [
                         {
                             label: 'Number of Patients',

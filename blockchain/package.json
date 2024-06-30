@@ -5,13 +5,16 @@
     "deploy": "npx thirdweb@latest deploy",
     "release": "npx thirdweb@latest release"
   },
+
   "devDependencies": {
     "@matterlabs/hardhat-zksync-solc": "^0.3.17",
-    "hardhat": "^2.13.0"
+    "hardhat": "^2.13.0",
+    "solc": "^0.8.26"
   },
   "dependencies": {
     "@thirdweb-dev/contracts": "^3.8.0",
     "avalanche": "^3.16.0",
     "zksync-web3": "^0.14.3"
-  }
+  },
+  "type": "module"
 }
