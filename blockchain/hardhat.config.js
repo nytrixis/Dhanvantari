@@ -1,38 +1,38 @@
-require("@matterlabs/hardhat-zksync-solc");
+import { Avalanche } from 'avalanche';
 
-/** @type import('hardhat/config').HardhatUserConfig */
+const fujiTestnet = {
+  url: 'https://api.avax-test.network/ext/bc/C/rpc',
+  networkID: 1,
+  chainId: 43113,
+  hrp: 'fuji',
+};
+
+const mainnet = {
+  url: 'https://api.avax.network/ext/bc/C/rpc',
+  networkID: 1,
+  chainId: 43114,
+  hrp: 'avax',
+};
+
+const avalanche = new Avalanche(fujiTestnet.url, {
+  networkID: fujiTestnet.networkID,
+  hrp: fujiTestnet.hrp,
+});
+
 module.exports = {
-  zksolc: {
-    version: "1.3.9",
-    compilerSource: "binary",
-    settings: {
-      optimizer: {
-        enabled: true,
-      },
-    },
-  },
+  avalanche,
   networks: {
-    zksync_testnet: {
-      url: "https://zksync2-testnet.zksync.dev",
-      ethNetwork: "goerli",
-      chainId: 280,
-      zksync: true,
-    },
-    zksync_mainnet: {
-      url: "https://zksync2-mainnet.zksync.io/",
-      ethNetwork: "mainnet",
-      chainId: 324,
-      zksync: true,
-    },
+    fuji: fujiTestnet,
+    mainnet,
   },
   paths: {
-    artifacts: "./artifacts-zk",
-    cache: "./cache-zk",
-    sources: "./contracts",
-    tests: "./test",
+    artifacts: './artifacts',
+    cache: './cache',
+    sources: './contracts',
+    tests: './test',
   },
   solidity: {
-    version: "0.8.17",
+    version: '0.8.17',
     settings: {
       optimizer: {
         enabled: true,
